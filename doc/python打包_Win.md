@@ -1,7 +1,5 @@
 > 此文为记录python_excel任务中 Python打包的过程
 
-
-
 ## 本地测试命令
 
 ```bash
@@ -9,10 +7,6 @@ python main.py <输入的文件路径> <输出路径>
 
 python main.py excel\mock.xlsx excel
 ```
-
-
-
-
 
 # 过程
 
@@ -31,13 +25,13 @@ pip install pyinstaller
 打包单个文件：
 
 ```bash
-pyinstaller -D --clean --win-private-assemblies test-jieba.py -c --noconfirm 
+pyinstaller -D --clean --win-private-assemblies DepartmentController.py -c --noconfirm 
 ```
 
 打包多个文件：
 
 ```bash
-pyinstaller -D --clean --win-private-assemblies main.py -p DepartmentController.py  -c --noconfirm 
+pyinstaller -D --clean --win-private-assemblies DepartmentController.py utils.py main.py -c --noconfirm --noconsole
 ```
 
 
