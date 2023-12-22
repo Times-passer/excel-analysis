@@ -75,10 +75,10 @@ class DepartmentManagerApp:
         self.text_area.grid(row=2, column=1, columnspan=5, rowspan=1, padx=(20,0), pady=10, sticky="nsew")
 
         self.import_excel_button = tk.Button(self.root, text="导入表格", command=self.import_excel)
-        self.import_excel_button.grid(row=3, column=1, columnspan=2, ipadx=60, padx=10, pady=(0,20), sticky="n")
+        self.import_excel_button.grid(row=3, column=1, columnspan=2, ipadx=60, ipady=5, padx=10, pady=(0,20), sticky="n")
 
         self.export_excel_button = tk.Button(self.root, text="导出表格", command=self.export_excel, state=tk.DISABLED)
-        self.export_excel_button.grid(row=3, column=4, columnspan=2, ipadx=60, padx=10, pady=(0,20), sticky="n")
+        self.export_excel_button.grid(row=3, column=4, columnspan=2, ipadx=60, ipady=5, padx=10, pady=(0,20), sticky="n")
 
         self.update_prompt("请导入需要转换的 .xls .xlsx .et 格式文件")
         self.load_data()  # 加载数据
@@ -142,18 +142,18 @@ class DepartmentManagerApp:
                 self.data = analyze_excel(file_path)
 
                 if self.data is not None:
-                    print(f'self.data：{self.data}')
-                    self.update_prompt(f"处理文件：{file_path}成功！\n请选择导出目录")
-                    self.export_button['state'] = tk.NORMAL  # 启用导出按钮
-                    messagebox.showinfo("成功", f"处理文件成功！请选择导出目录")
+                    # print(f'self.data：{self.data}')
+                    self.update_prompt(f'处理文件：{file_path}成功！\n请点击"导出表格"按钮选择导出目录')
+                    self.export_excel_button['state'] = tk.NORMAL  # 启用导出按钮
+                    messagebox.showinfo("成功", f'处理文件成功！请点击"导出表格"按钮选择导出目录')
                 else:
                     self.update_prompt(f"self.data为空：{self.data}")
-                    self.export_button['state'] = tk.DISABLED  # 禁用导出按钮
+                    self.export_excel_button['state'] = tk.DISABLED  # 禁用导出按钮
                     
             except Exception as e:
                 print(f'analyze_excel(file_path)失败,{e}')
                 self.update_prompt(f"处理文件：{file_path}失败！\n{e}")
-                self.export_button['state'] = tk.DISABLED  # 禁用导出按钮
+                self.export_excel_button['state'] = tk.DISABLED  # 禁用导出按钮
 
 
     def export_excel(self):

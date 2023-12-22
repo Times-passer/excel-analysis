@@ -36,6 +36,10 @@ pyinstaller -D --clean --win-private-assemblies DepartmentController.py -c --noc
 pyinstaller -D --clean --win-private-assemblies DepartmentController.py utils.py main.py -c --noconfirm --noconsole
 ```
 
+打包完记得把doc放到打包结果里！！！
+
+
+
 
 
 解释：
